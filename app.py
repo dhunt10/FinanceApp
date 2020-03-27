@@ -8,15 +8,15 @@ api = Api(app)
 class StockTrade(Resource):
     def __init__(self):
         parser = reqparse.RequestParser(bundle_errors=True)
-	parser.add_argument('stock',
+        parser.add_argument('stock',
 			    type=str,
 			    required=True)
-	self.parser = parser
+        self.parser = parser
 
     def get(self):
         args = self.parser.parse_args()
-	result = quoteGetter(stock=args.stock.upper())
-	return result
+        result = quoteGetter(stock=args.stock.upper())
+        return result
 
 api.add_resource(StockTrade, '/trade')
 
